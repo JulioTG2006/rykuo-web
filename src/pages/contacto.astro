@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BackHome from "../components/BackHome.astro";
+---
+
+<BaseLayout
+  title="Contacto | Rykuo"
+  description="Contáctanos para soluciones industriales personalizadas."
+>
+
+  <div class="pt-32 max-w-7xl mx-auto px-6">
+    <BackHome />
+  </div>
+
+  <section class="pt-20 pb-24 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <h1 class="text-4xl md:text-5xl font-light mb-12">
+        Contáctanos
+      </h1>
+
+      <form id="contactForm" class="space-y-6">
+
+        <!-- Nombre -->
+        <div>
+          <label class="block mb-2 font-medium">Nombre</label>
+          <input 
+            type="text" 
+            id="name"
+            class="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
+          />
+          <p class="text-red-500 text-sm mt-1 hidden" id="nameError">
+            El nombre es obligatorio.
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block mb-2 font-medium">Correo electrónico</label>
+          <input 
+            type="email" 
+            id="email"
+            class="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
+          />
+          <p class="text-red-500 text-sm mt-1 hidden" id="emailError">
+            Ingresa un correo válido.
+          </p>
+        </div>
+
+        <!-- Mensaje -->
+        <div>
+          <label class="block mb-2 font-medium">Mensaje</label>
+          <textarea 
+            id="message"
+            rows="5"
+            class="w-full border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
+          ></textarea>
+          <p class="text-red-500 text-sm mt-1 hidden" id="messageError">
+            El mensaje es obligatorio.
+          </p>
+        </div>
+
+        <!-- Botón -->
+        <button 
+          type="submit"
+          class="bg-black text-white px-6 py-3 rounded hover:opacity-80 transition"
+        >
+          Enviar mensaje
+        </button>
+
+        <!-- Mensaje éxito -->
+        <p id="successMessage" class="text-green-600 mt-4 hidden">
+          ✅ Tu mensaje fue enviado correctamente.
+        </p>
+
+      </form>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const form = document.getElementById("contactForm") as HTMLFormElement;
+      const name = document.getElementById("name") as HTMLInputElement;
+      const email = document.getElementById("email") as HTMLInputElement;
+      const message = document.getElementById("message") as HTMLTextAreaElement;
+
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const messageError = document.getElementById("messageError");
+      const successMessage = document.getElementById("successMessage");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let valid = true;
+
+        // Reset
+        nameError?.classList.add("hidden");
+        emailError?.classList.add("hidden");
+        messageError?.classList.add("hidden");
+        successMessage?.classList.add("hidden");
+
+        // Validar nombre
+        if (name.value.trim() === "") {
+          nameError?.classList.remove("hidden");
+          valid = false;
+        }
+
+        // Validar email
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!emailPattern.test(email.value)) {
+          emailError?.classList.remove("hidden");
+          valid = false;
+        }
+
+        // Validar mensaje
+        if (message.value.trim() === "") {
+          messageError?.classList.remove("hidden");
+          valid = false;
+        }
+
+        if (valid) {
+          successMessage?.classList.remove("hidden");
+          form.reset();
+
+          // Evento Google Analytics (cuando lo actives)
+          if (typeof gtag === "function") {
+            gtag("event", "formulario_contacto_enviado");
+          }
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

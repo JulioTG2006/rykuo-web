@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BackHome from "../components/BackHome.astro";
+
+---
+
+<BaseLayout
+  title="Servicios | Rykuo"
+  description="Descubre nuestros servicios industriales especializados."
+>
+  <div class="pt-32 max-w-7xl mx-auto px-6">
+    <BackHome />
+  </div>
+  <section class="pt-32 pb-24 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <h1 class="text-4xl md:text-5xl font-light mb-16">
+        Nuestros Servicios
+      </h1>
+
+      <div class="space-y-16">
+
+        <div>
+          <h2 class="text-2xl font-medium mb-4">
+            Consultoría Técnica
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Evaluamos procesos industriales y proponemos mejoras estratégicas
+            que optimizan costos y aumentan productividad.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-medium mb-4">
+            Instalación e Implementación
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Ejecutamos instalaciones con altos estándares de calidad y seguridad.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-medium mb-4">
+            Mantenimiento Industrial
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Programas preventivos y correctivos para garantizar continuidad operativa.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

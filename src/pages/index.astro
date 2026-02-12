@@ -1,17 +1,19 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import Products from "../components/sections/Products.astro";
+import Services from "../components/sections/Services.astro";
+import CTA from "../components/sections/CTA.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Rykuo | Soluciones Industriales"
+  description="Empresa especializada en soluciones industriales de alto rendimiento."
+>
+  <Hero />
+  <About />
+  <Products />
+  <Services />
+  <CTA />
+</BaseLayout>
