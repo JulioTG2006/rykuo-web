@@ -4,6 +4,9 @@ import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 
 const { title, description } = Astro.props;
+
+const siteUrl = "https://rykuo.com"; // cambiar cuando tengas dominio real
+const ogImage = `${siteUrl}/og-image.jpg`; // coloca esta imagen en /public
 ---
 
 <!DOCTYPE html>
@@ -11,16 +14,35 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Rykuo" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics (solo producción) -->
+    <!-- Google Analytics solo en producción -->
     {import.meta.env.PROD && (
       <>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
@@ -37,11 +59,11 @@ const { title, description } = Astro.props;
 
   <body class="bg-white text-gray-900 antialiased">
     <Header />
-<main class="pt-20"></main>
-    <main>
+
+    <main class="pt-20">
       <slot />
     </main>
-    <main class="pt-20">
+
     <Footer />
   </body>
 </html>
