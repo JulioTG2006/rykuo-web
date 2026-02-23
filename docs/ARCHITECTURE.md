@@ -1,44 +1,83 @@
+# ESTRUCTURA DE DOCUMENTACIÓN – PROYECTO RYKUO WEB
 
-# Architecture
+## 1️⃣ Información General del Proyecto
 
-## Overview
-Brief description of the system architecture and design principles.
+**Nombre del Proyecto:** Rykuo Web  
+**Desarrollador / Equipo:** Julio Samuel Torres Garate  
+**Carrera:** Desarrollo y diseño de Software  
+**Versión:** v1.0  
+**Fecha de entrega:** 23/02/2026  
+**Repositorio Oficial:** https://github.com/diegomejiam/Rykuo-Web 
 
-## Project Structure
-```
+
+## Arquitectura del Sistema
+
+- Arquitectura modular basada en componentes  
+- Generación estática (SSG)  
+- Layout global (BaseLayout.astro)  
+- Componentes reutilizables (Hero, About, Products, Services, CTA, etc.)  
+- Separación clara de capas: `components/`, `pages/`, `styles/`, `public/`  
+
+**Flujo del Sistema:**  
+Usuario → Página (Astro) → Layout global → Componentes → JS dinámico → Google Analytics → HTML optimizado
+
+---
+
+## Tecnologías Utilizadas
+
+- **Astro:** Framework principal, renderizado SSG  
+- **Tailwind CSS:** Estilos y diseño responsivo  
+- **JavaScript:** Interactividad y cotización dinámica  
+- **Google Analytics:** Seguimiento de visitas y comportamiento  
+- **HTML5 / CSS3:** Estructura y estilos base  
+
+---
+
+## Estructura de Carpetas
+
+
+rykuo-web/
+├── public/
+│ ├── images/
+│ ├── video/
+│ ├── favicon.ico
+│ └── robots.txt
 ├── src/
-│   ├── components/
-│   ├── services/
-│   ├── utils/
-│   └── pages/
-├── tests/
-├── docs/
-└── README.md
-```
+│ ├── components/
+│ │ ├── layout/
+│ │ │ ├── Header.astro
+│ │ │ └── Footer.astro
+│ │ └── sections/
+│ │ ├── Hero.astro
+│ │ ├── About.astro
+│ │ ├── Products.astro
+│ │ ├── Services.astro
+│ │ ├── CTA.astro
+│ │ └── BackHome.astro
+│ ├── layouts/
+│ │ └── BaseLayout.astro
+│ ├── pages/
+│ │ ├── index.astro
+│ │ ├── sobre-nosotros.astro
+│ │ ├── productos.astro
+│ │ ├── servicios.astro
+│ │ ├── cotizacion.astro
+│ │ └── contacto.astro
+│ └── styles/
+│ └── global.css
+├── .env.example
+├── astro.config.mjs
+├── tsconfig.json
+└── package.json
 
-## Core Modules
 
-### Components
-Description of reusable UI components.
+---
 
-### Services
-Description of business logic and external integrations.
+## Flujo de Trabajo
 
-### Utils
-Description of helper functions and utilities.
-
-## Design Patterns
-- Pattern 1
-- Pattern 2
-
-## Data Flow
-Explain how data moves through the application.
-
-## Dependencies
-List major dependencies and why they were chosen.
-
-## Performance Considerations
-Key optimization strategies.
-
-## Security
-Security measures and best practices implemented.
+1. Usuario accede a la ruta → Astro procesa página  
+2. BaseLayout se aplica  
+3. Componentes se renderizan  
+4. JS ejecuta funcionalidad dinámica (cotización, formulario)  
+5. Google Analytics registra visitas y comportamiento  
+6. HTML final optimizado se entrega al navegador  
