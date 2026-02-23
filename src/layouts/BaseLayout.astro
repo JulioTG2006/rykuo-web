@@ -5,13 +5,16 @@ import Footer from "../components/layout/Footer.astro";
 
 const { title, description } = Astro.props;
 
-const siteUrl = "https://rykuo.com"; // cambiar cuando tengas dominio real
+const siteUrl = "https://rykuo-web-temporal.vercel.app/"; 
 const ogImage = `${siteUrl}/og-image.jpg`; // coloca esta imagen en /public
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <meta name="keywords" content="productos industriales, motores industriales, automatización industrial, control industrial, cotización industrial, Rykuo" />
+<meta name="author" content="Julio Samuel Torres Garate" />
+<meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -42,18 +45,15 @@ const ogImage = `${siteUrl}/og-image.jpg`; // coloca esta imagen en /public
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics solo en producción -->
-    {import.meta.env.PROD && (
-      <>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XXXXXXX');
-        </script>
-      </>
-    )}
+   
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQDSE26T0T"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NQDSE26T0T');
+    </script>
 
   </head>
 

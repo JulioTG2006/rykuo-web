@@ -63,38 +63,39 @@ Las funcionalidades dinámicas se manejan del lado del cliente.
 ---
 ```
 rykuo-web/
-├── public/
-│   ├── images/          # Imágenes estáticas
-│   ├── video/           # Videos
-│   ├── favicon.ico
-│   └── robots.txt
 ├── src/
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Header.astro
-│   │   │   └── Footer.astro
-│   │   └── sections/
-│   │       ├── Hero.astro
-│   │       ├── About.astro
-│   │       ├── Products.astro
-│   │       ├── Services.astro
-│   │       ├── CTA.astro
-│   │       └── BackHome.astro
 │   ├── layouts/
+│   │   ├
 │   │   └── BaseLayout.astro
+│   ├── components/
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   ├── NavBar.astro
+│   │   ├── ProductCard.astro
+│   │   ├── ProductFilter.astro
+│   │   ├── QuotationForm.astro
+│   │   └── ContactForm.astro
 │   ├── pages/
 │   │   ├── index.astro
-│   │   ├── sobre-nosotros.astro
 │   │   ├── productos.astro
 │   │   ├── servicios.astro
 │   │   ├── cotizacion.astro
+│   │   ├── sobre-nosotros.astro
 │   │   └── contacto.astro
-│   └── styles/
-│       └── global.css
-├── .env.example
+│   ├── styles/
+│   │   └── globals.css
+│   └── scripts/
+│       ├── quotation.js
+│       └── filter.js
+├── public/
+│   ├── images/
+│   │   ├── products/
+│   │   └── logos/
+│   └── favicon.svg
 ├── astro.config.mjs
-├── tsconfig.json
-└── package.json
+├── tailwind.config.js
+├── package.json
+└── README.md
 ```
 
 ## ⚙ Funcionalidades Implementadas

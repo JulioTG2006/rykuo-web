@@ -8,86 +8,232 @@ import BackHome from "../components/BackHome.astro";
   description="Catálogo de productos industriales de alto rendimiento."
 >
 
-  <div class="pt-32 max-w-7xl mx-auto px-6">
-    <BackHome />
-  </div>
+<div class="pt-32 max-w-7xl mx-auto px-6">
+  <BackHome />
+</div>
 
-  <section class="pt-32 pb-24 bg-white">
+<section class="pt-20 pb-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="max-w-7xl mx-auto px-6">
+    <h1 class="text-4xl md:text-5xl font-light mb-16">
+      Productos
+    </h1>
 
-      <h1 class="text-4xl md:text-5xl font-light mb-16">
-        Productos
-      </h1>
+    <!-- Filtro -->
+    <div class="mb-10">
+      <label class="mr-2 font-semibold">Filtrar por categoría:</label>
+      <select id="filter" class="border px-3 py-2 rounded">
+        <option value="all">Todos</option>
+        <option value="motores">Motores</option>
+        <option value="automatizacion">Automatización</option>
+        <option value="control">Control</option>
+      </select>
+    </div>
 
-      <!-- Filtro -->
-      <div class="mb-10">
-        <label class="mr-2 font-semibold">Filtrar por categoría:</label>
-        <select id="filter" class="border px-3 py-2 rounded">
-          <option value="all">Todos</option>
-          <option value="motores">Motores</option>
-          <option value="automatizacion">Automatización</option>
-          <option value="control">Control</option>
-        </select>
+    <!-- GRID PRODUCTOS -->
+    <div class="grid md:grid-cols-3 gap-10 mb-20">
+
+      <!-- ===== MOTORES ===== -->
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="motores"
+           data-name="Motor Industrial X"
+           data-price="1500">
+        <img src="/images/motor1.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Motor Industrial X</h2>
+        <p class="text-gray-600 text-sm">Alta eficiencia para entornos exigentes.</p>
       </div>
 
-      <!-- Grid Productos -->
-      <div class="grid md:grid-cols-3 gap-10">
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="motores"
+           data-name="Motor TorqueMax"
+           data-price="1800">
+        <img src="/images/motor2.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Motor TorqueMax</h2>
+        <p class="text-gray-600 text-sm">Potencia optimizada para maquinaria pesada.</p>
+      </div>
 
-        <div class="producto border p-6 rounded-lg hover:shadow-lg transition"
-             data-category="motores">
-          <img src="/images/product1.jpg" class="h-80 w-full object-cover mb-6 rounded" />
-          <h2 class="text-xl font-medium mb-2">Motor Industrial X</h2>
-          <p class="text-gray-600 text-sm">
-            Motor de alta eficiencia energética para entornos exigentes.
-          </p>
-        </div>
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="motores"
+           data-name="Motor EcoDrive"
+           data-price="1400">
+        <img src="/images/motor3.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Motor EcoDrive</h2>
+        <p class="text-gray-600 text-sm">Diseño eficiente con bajo consumo energético.</p>
+      </div>
 
-        <div class="producto border p-6 rounded-lg hover:shadow-lg transition"
-             data-category="automatizacion">
-          <img src="/images/product2.jpg" class="h-80 w-full object-cover mb-6 rounded" />
-          <h2 class="text-xl font-medium mb-2">Sistema Automatizado</h2>
-          <p class="text-gray-600 text-sm">
-            Automatización avanzada para líneas de producción.
-          </p>
-        </div>
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="motores"
+           data-name="Motor Industrial Pro"
+           data-price="2000">
+        <img src="/images/motor4.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Motor Industrial Pro</h2>
+        <p class="text-gray-600 text-sm">Rendimiento continuo industrial.</p>
+      </div>
 
-        <div class="producto border p-6 rounded-lg hover:shadow-lg transition"
-             data-category="control">
-          <img src="/images/product3.jpg" class="h-80 w-full object-cover mb-8 rounded" />
-          <h2 class="text-xl font-medium mb-2">Controlador Inteligente</h2>
-          <p class="text-gray-600 text-sm">
-            Control y monitoreo en tiempo real.
-          </p>
-        </div>
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="motores"
+           data-name="Motor SmartPower"
+           data-price="1700">
+        <img src="/images/motor5.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Motor SmartPower</h2>
+        <p class="text-gray-600 text-sm">Integración inteligente avanzada.</p>
+      </div>
 
+
+      <!-- ===== AUTOMATIZACIÓN ===== -->
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="automatizacion"
+           data-name="Sistema Automatizado A1"
+           data-price="3200">
+        <img src="/images/auto1.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Sistema Automatizado A1</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="automatizacion"
+           data-name="Robot Industrial RX"
+           data-price="4500">
+        <img src="/images/auto2.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Robot Industrial RX</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="automatizacion"
+           data-name="Sistema Conveyor Pro"
+           data-price="2800">
+        <img src="/images/auto3.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Sistema Conveyor Pro</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="automatizacion"
+           data-name="Automatización SmartLine"
+           data-price="3900">
+        <img src="/images/auto4.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Automatización SmartLine</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="automatizacion"
+           data-name="Brazo Robótico Z"
+           data-price="4100">
+        <img src="/images/auto5.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Brazo Robótico Z</h2>
+      </div>
+
+
+      <!-- ===== CONTROL ===== -->
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="control"
+           data-name="Controlador Inteligente"
+           data-price="2100">
+        <img src="/images/control1.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Controlador Inteligente</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="control"
+           data-name="Panel PLC Advanced"
+           data-price="2600">
+        <img src="/images/control2.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Panel PLC Advanced</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="control"
+           data-name="Sistema SCADA Pro"
+           data-price="3500">
+        <img src="/images/control3.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Sistema SCADA Pro</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="control"
+           data-name="Módulo IoT Industrial"
+           data-price="2300">
+        <img src="/images/control4.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Módulo IoT Industrial</h2>
+      </div>
+
+      <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
+           data-category="control"
+           data-name="Control SmartHub"
+           data-price="2900">
+        <img src="/images/control5.jpg" class="h-80 w-full object-cover mb-6 rounded" />
+        <h2 class="text-xl font-medium mb-2">Control SmartHub</h2>
       </div>
 
     </div>
-  </section>
 
-  <!-- Script del filtro -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const filter = document.getElementById("filter") as HTMLSelectElement | null;
-    const productos = document.querySelectorAll<HTMLElement>(".producto");
+    <!-- ===== COTIZADOR ===== -->
+    <div class="bg-gray-100 p-10 rounded-xl shadow-md max-w-2xl mx-auto">
 
-    if (!filter) return;
+      <h2 class="text-2xl font-semibold mb-6 text-center">
+        Cotización Inteligente
+      </h2>
 
-    filter.addEventListener("change", () => {
-      const value = filter.value;
+      <div id="resumenContainer" class="mb-6 text-sm space-y-2"></div>
 
-      productos.forEach((producto) => {
-        const category = producto.dataset.category;
+      <div class="mb-6">
+        <label class="block mb-2 font-medium">Cantidad</label>
+        <input type="number" id="cantidadInput" value="1" min="1"
+               class="w-full border px-4 py-2 rounded" />
+      </div>
 
-        if (value === "all" || category === value) {
-          producto.style.display = "block";
-        } else {
-          producto.style.display = "none";
-        }
-      });
+      <div class="text-center border-t pt-6">
+        <p class="text-lg">Total estimado:</p>
+        <p id="totalResultado" class="text-4xl font-bold text-blue-600 mt-2">$0</p>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", function () {
+
+  var productos = document.querySelectorAll(".producto");
+  var cantidadInput = document.getElementById("cantidadInput");
+  var totalResultado = document.getElementById("totalResultado");
+  var resumenContainer = document.getElementById("resumenContainer");
+
+  var precio = 0;
+  var nombre = "";
+
+  productos.forEach(function (producto) {
+
+    producto.addEventListener("click", function () {
+
+      nombre = producto.getAttribute("data-name");
+      precio = parseFloat(producto.getAttribute("data-price")) || 0;
+
+      // Mostrar producto seleccionado
+      resumenContainer.innerHTML = 
+        "<p><strong>Producto seleccionado:</strong> " + nombre + "</p>";
+
+      calcularTotal();
     });
+
   });
+
+  function calcularTotal() {
+
+    if (!cantidadInput) return;
+
+    var cantidad = parseInt(cantidadInput.value) || 1;
+    var total = precio * cantidad;
+
+    totalResultado.textContent = "$" + total;
+  }
+
+  if (cantidadInput) {
+    cantidadInput.addEventListener("input", calcularTotal);
+  }
+
+});
 </script>
 
 </BaseLayout>
