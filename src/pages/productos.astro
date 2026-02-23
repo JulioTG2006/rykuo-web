@@ -79,7 +79,6 @@ import BackHome from "../components/BackHome.astro";
         <p class="text-gray-600 text-sm">Integración inteligente avanzada.</p>
       </div>
 
-
       <!-- ===== AUTOMATIZACIÓN ===== -->
       <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
            data-category="automatizacion"
@@ -120,7 +119,6 @@ import BackHome from "../components/BackHome.astro";
         <img src="/images/auto5.jpg" class="h-80 w-full object-cover mb-6 rounded" />
         <h2 class="text-xl font-medium mb-2">Brazo Robótico Z</h2>
       </div>
-
 
       <!-- ===== CONTROL ===== -->
       <div class="producto border p-6 rounded-lg hover:shadow-lg transition cursor-pointer"
@@ -167,73 +165,87 @@ import BackHome from "../components/BackHome.astro";
 
     <!-- ===== COTIZADOR ===== -->
     <div class="bg-gray-100 p-10 rounded-xl shadow-md max-w-2xl mx-auto">
-
-      <h2 class="text-2xl font-semibold mb-6 text-center">
-        Cotización Inteligente
-      </h2>
-
+      <h2 class="text-2xl font-semibold mb-6 text-center">Cotización Inteligente</h2>
       <div id="resumenContainer" class="mb-6 text-sm space-y-2"></div>
-
       <div class="mb-6">
         <label class="block mb-2 font-medium">Cantidad</label>
         <input type="number" id="cantidadInput" value="1" min="1"
                class="w-full border px-4 py-2 rounded" />
       </div>
-
       <div class="text-center border-t pt-6">
         <p class="text-lg">Total estimado:</p>
         <p id="totalResultado" class="text-4xl font-bold text-blue-600 mt-2">$0</p>
       </div>
-
-
-
     </div>
 
   </div>
 </section>
 
 <script is:inline>
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
+  function init() {
+    var productos = document.querySelectorAll(".producto");
+    var cantidadInput = document.getElementById("cantidadInput");
+    var totalResultado = document.getElementById("totalResultado");
+    var resumenContainer = document.getElementById("resumenContainer");
+    var filtro = document.getElementById("filter");
 
-  var productos = document.querySelectorAll(".producto");
-  var cantidadInput = document.getElementById("cantidadInput");
-  var totalResultado = document.getElementById("totalResultado");
-  var resumenContainer = document.getElementById("resumenContainer");
+    if (!filtro || productos.length === 0) return;
 
-  var precio = 0;
-  var nombre = "";
+    var precio = 0;
 
-  productos.forEach(function (producto) {
+    // ── FILTRO ──────────────────────────────────────────────
+    filtro.addEventListener("change", function () {
+      var cat = this.value;
 
-    producto.addEventListener("click", function () {
+      productos.forEach(function (p) {
+        if (cat === "all" || p.getAttribute("data-category") === cat) {
+          p.style.display = "";
+        } else {
+          p.style.display = "none";
+        }
+      });
 
-      nombre = producto.getAttribute("data-name");
-      precio = parseFloat(producto.getAttribute("data-price")) || 0;
-
-      // Mostrar producto seleccionado
-      resumenContainer.innerHTML = 
-        "<p><strong>Producto seleccionado:</strong> " + nombre + "</p>";
-
-      calcularTotal();
+      // Resetear cotizador
+      precio = 0;
+      if (resumenContainer) resumenContainer.innerHTML = "";
+      if (totalResultado)   totalResultado.textContent = "$0";
     });
 
-  });
+    // ── SELECCIONAR PRODUCTO ─────────────────────────────────
+    productos.forEach(function (p) {
+      p.addEventListener("click", function () {
+        productos.forEach(function (x) { x.style.outline = ""; });
+        this.style.outline = "2px solid #2563eb";
 
-  function calcularTotal() {
+        var nombre = this.getAttribute("data-name");
+        precio = parseFloat(this.getAttribute("data-price")) || 0;
 
-    if (!cantidadInput) return;
+        if (resumenContainer) {
+          resumenContainer.innerHTML =
+            "<p><strong>Producto:</strong> " + nombre + "</p>" +
+            "<p><strong>Precio unitario:</strong> $" + precio.toLocaleString() + "</p>";
+        }
+        calcularTotal();
+      });
+    });
 
-    var cantidad = parseInt(cantidadInput.value) || 1;
-    var total = precio * cantidad;
+    // ── CANTIDAD ─────────────────────────────────────────────
+    function calcularTotal() {
+      if (!cantidadInput || !totalResultado) return;
+      var cantidad = parseInt(cantidadInput.value) || 1;
+      totalResultado.textContent = "$" + (precio * cantidad).toLocaleString();
+    }
 
-    totalResultado.textContent = "$" + total;
+    if (cantidadInput) cantidadInput.addEventListener("input", calcularTotal);
   }
 
-  if (cantidadInput) {
-    cantidadInput.addEventListener("input", calcularTotal);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
-
-});
+})();
 </script>
 
 </BaseLayout>
